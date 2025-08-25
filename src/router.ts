@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from "express-validator";
-import { createAccount, getUser, login, updateImage, updateProfile } from "./handlers";
+import { createAccount, getUser, getUserByHandle, login, updateImage, updateProfile } from "./handlers";
 import { handleInputErrors } from "./middleware/validation";
 import { authenticate } from "./middleware/auth";
 
@@ -47,5 +47,7 @@ router.patch('/user', body('handle')
 )
 
 router.post('/user/image', authenticate, updateImage);
+
+router.get('/:handle', getUserByHandle)
 
 export default router;
